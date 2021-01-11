@@ -1,6 +1,6 @@
 "use strict";
 
-import { app, protocol, BrowserWindow , globalShortcut} from "electron";
+import { app, protocol, BrowserWindow } from "electron";
 import { createProtocol } from "vue-cli-plugin-electron-builder/lib";
 import installExtension, { VUEJS_DEVTOOLS } from "electron-devtools-installer";
 const isDevelopment = process.env.NODE_ENV !== "production";
@@ -17,6 +17,8 @@ async function createWindow() {
     height: 600,
     frame: false,
     useContentSize: true,
+    transparent: true,
+    hasShadow: false,
     webPreferences: {
       // Use pluginOptions.nodeIntegration, leave this alone
       // See nklayman.github.io/vue-cli-plugin-electron-builder/guide/security.html#node-integration for more info
@@ -51,9 +53,6 @@ app.on("ready", async () => {
     // Install Vue Devtools
     try {
       await installExtension(VUEJS_DEVTOOLS);
-      globalShortcut.register('ctrl+x+', function () {
-        createWindow()
-      })
     } catch (e) {
       console.error("Vue Devtools failed to install:", e.toString());
     }

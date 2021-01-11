@@ -16,7 +16,7 @@
       >
         <div class="flex">
           <button class="menu_btn move">動</button>
-          <button class="menu_btn"  @click="goBack">前</button>
+          <button class="menu_btn" @click="goBack">前</button>
           <button class="menu_btn" @click="goForward">次</button>
           <button class="menu_btn" @click="reload">再</button>
         </div>
@@ -28,6 +28,7 @@
         />
         <div class="flex">
           <button class="menu_btn" @click="isOpenMenu = !isOpenMenu">消</button>
+          <button class="menu_btn" @click="setTop">上</button>
         </div>
       </div>
     </transition>
@@ -37,6 +38,7 @@
 
 <script>
 import drag from "@branu-jp/v-drag";
+import { remote } from "electron";
 export default {
   name: "App",
   directives: {
@@ -47,24 +49,26 @@ export default {
       isOpenMenu: false,
       serchQuery: "",
       webview: null,
+      win: null,
+      isTop: false,
     };
   },
   methods: {
     loadurl() {
-      const isUrl = function(url)  {
+      const isUrl = (function (url) {
         try {
           new URL(url);
         } catch (_) {
           return false;
         }
         return true;
-      }(this.serchQuery);
-      if(isUrl){
-        this.webview.loadURL(this.serchQuery)
-        return
+      })(this.serchQuery);
+      if (isUrl) {
+        this.webview.loadURL(this.serchQuery);
+        return;
       }
-      const serchURL=this.serchQuery.replace(/\s/g,"+")
-      this.webview.loadURL(`https://www.google.com/search?q=${serchURL}`)
+      const serchURL = this.serchQuery.replace(/\s/g, "+");
+      this.webview.loadURL(`https://www.google.com/search?q=${serchURL}`);
     },
     goBack() {
       this.webview.canGoBack() && this.webview.goBack();
@@ -75,12 +79,17 @@ export default {
     reload() {
       this.webview.reload();
     },
-    setURL(){
-      this.serchQuery=this.webview.geturl()
+    setURL() {
+      this.serchQuery = this.webview.geturl();
+    },
+    setTop() {
+      this.isTop = !this.isTop;
+      this.win.setAlwaysOnTop(this.isTop);
     },
   },
   mounted: function () {
     this.webview = this.$refs.wv;
+    this.win = remote.BrowserWindow.getFocusedWindow();
   },
 };
 </script>
