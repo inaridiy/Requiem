@@ -4,6 +4,11 @@ module.exports = {
       nodeIntegration: true,
       builderOptions: {
         productName: "Requiem",
+        appId:"com.electron.requiem",
+        mac: {
+          icon: "src/assets/logo.png",
+          target: "dmg",
+        },
         win: {
           icon: "src/assets/logo.png",
           target: [

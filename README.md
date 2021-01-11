@@ -1,32 +1,38 @@
-# Vue+tailwindCSS
+作業しながら快適に調べ物をしたり、動画を見たりするためにとてもシンプルなブラウザを作成しました。
+使ってくれるとうれしいです。
+名前は本当に適当です。
 
-これは tailwindCSS と Vue のテンプレートです。
-あらかじめ VueCLI を導入してください
+# 使い方
+三を押すとメニューが表示されボタンやフォームが出てきます。
 
-## Project setup
+動: ここをドラック＆ドロップするとWindow全体が動きます
+前: 前いたページに戻ります
+次: 次のページに移動します
+再: ページを再読み込みします
+フォーム: URLか検索ワードを入力できます
+消: メニューを閉じます
+上: Windowを最前列に表示するようにします。もう一度押すと解除されます
+
+# 注意
+セキュリティなどががばがばな可能性があるため、使用には注意を図ってください。
+万が一使用者に被害が及んでも私は一切責任を問いません。
+
+# Macユーザーの方へ
+Windowsユーザーの方にはビルド済みファイルがありますが、Macユーザーにはありません。
+そのため各自でビルドしてください
+なお動作確認はできていません。
+
+# ビルド
+## 前提条件
+node.js 14以降
+npm 6.14以降
+git
+
+##　ビルド方法
 
 ```
-npm install
-```
-
-### Compiles and hot-reloads for development
-
-```
-npm run serve
-```
-
-### Compiles and minifies for production
-
-```
+$git clone https://github.com/inaridiy/Requiem.git
+cd Requiem
+npm i
 npm run build
 ```
-
-### Lints and fixes files
-
-```
-npm run lint
-```
-
-### Customize configuration
-
-See [Configuration Reference](https://cli.vuejs.org/config/).

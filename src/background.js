@@ -38,7 +38,6 @@ async function createWindow() {
   }
 }
 
-
 app.on("activate", () => {
   // On macOS it's common to re-create a window in the app when the
   // dock icon is clicked and there are no other windows open.
@@ -62,6 +61,6 @@ app.on("ready", async () => {
 
 // Exit cleanly on request from parent process in development mode.
 
-app.on('will-quit', () => {
-  globalShortcut.unregisterAll()
-})
+app.on("will-quit", () => {
+  globalShortcut.unregisterAll();
+});
