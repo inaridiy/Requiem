@@ -4,7 +4,7 @@
 ビルド済みファイル=>https://drive.google.com/drive/folders/1TVwQAmvYXj2-v6LU8DuuUk5Gw9htGvFN?usp=sharing
 
 # 使い方
-三を押すとメニューが表示されボタンやフォームが出てきます。  
+三をダブルクリックするとメニューが表示されボタンやフォームが出てきます。  
   
 動: ここをドラック＆ドロップするとWindow全体が動きます  
 前: 前いたページに戻ります  
